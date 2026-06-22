@@ -103,6 +103,10 @@ export default defineComponent({
       type: Number,
       default: 0
     },
+    chaptersSrc: {
+      type: String,
+      default: ''
+    },
     storyboardSrc: {
       type: String,
       default: ''
@@ -787,22 +791,18 @@ export default defineComponent({
 
     const uiConfig = computed(() => {
       const controlPanelElements = [
+        'ft_skip_previous',
         'play_pause',
+        'ft_skip_next',
         'mute',
         'volume',
         'time_and_duration',
         'spacer'
       ]
-      const controlPanelElementsWithSkipButtons = [
-        ...controlPanelElements.slice(0, 1),
-        'ft_skip_previous',
-        'ft_skip_next',
-        ...controlPanelElements.slice(1)
-      ]
 
       /** @type {shaka.extern.UIConfiguration} */
       const uiConfig = {
-        controlPanelElements: props.watchingPlaylist ? controlPanelElementsWithSkipButtons : controlPanelElements,
+        controlPanelElements: controlPanelElements,
         overflowMenuButtons: [],
 
         // only set this to label when we actually have labels, so that the warning doesn't show up
@@ -824,6 +824,7 @@ export default defineComponent({
           'playback_rate',
           'captions',
           'ft_audio_tracks',
+          'chapter',
           'loop',
           'ft_screenshot',
           'picture_in_picture',
@@ -851,6 +852,7 @@ export default defineComponent({
           'captions',
           'playback_rate',
           props.format === 'legacy' ? 'ft_legacy_quality' : 'quality',
+          'chapter',
           'loop',
           'recenter_vr',
           'toggle_stereoscopic',
@@ -884,6 +886,15 @@ export default defineComponent({
         removeFromArrayIfExists(uiConfig.overflowMenuButtons, 'toggle_stereoscopic')
       }
 
+      if (!props.watchingPlaylist) {
+        removeFromArrayIfExists(uiConfig.controlPanelElements, 'ft_skip_previous')
+        removeFromArrayIfExists(uiConfig.controlPanelElements, 'ft_skip_next')
+      }
+
+      if (props.chapters.length === 0) {
+        removeFromArrayIfExists(uiConfig.overflowMenuButtons, 'chapter')
+      }
+
       return uiConfig
     })
 
@@ -904,6 +915,10 @@ export default defineComponent({
           contextMenuElements: ['ft_stats'],
           enableTooltips: true,
           seekBarColors: {
+            // shaka-player's chapter markers only show up part of the time for the DASH and audio formats
+            // the issue is clearly on the FreeTube side as shaka-player's demo page works fine and they show up all the time for the legacy formats.
+            // As I have spent way too much time debugging it and still cannot make sense of it, we'll stick with FreeTube's own chapter markers for now.
+            chapters: 'transparent',
             played: 'var(--primary-color)'
           },
           showAudioCodec: false,
@@ -2244,6 +2259,23 @@ export default defineComponent({
       seekBySeconds(dist, true)
     }
 
+    // Blur player buttons to remove :focus-visible state, preventing tooltips from staying visible
+    const buttonWithTooltipClasses = [
+      'shaka-play-button',
+      'shaka-fullscreen-button',
+      'shaka-mute-button',
+      'shaka-pip-button',
+      'full-window-button',
+      'theatre-button',
+      'screenshot-button',
+    ]
+    function blurTooltipButtons() {
+      const element = document.activeElement
+      if (buttonWithTooltipClasses.some(className => element.classList.contains(className))) {
+        element.blur()
+      }
+    }
+
     /**
      * @param {KeyboardEvent} event
      */
@@ -2283,6 +2315,11 @@ export default defineComponent({
         return
       }
 
+      // allow focusing on search bar without affecting the playback
+      if ((process.platform === 'darwin' && event.metaKey) && event.key.toLowerCase() === 'l') {
+        return
+      }
+
       const video_ = video.value
 
       // Skip to next video in playlist or recommended
@@ -2304,6 +2341,7 @@ export default defineComponent({
           // Toggle Play/Pause
           event.preventDefault()
           video_.paused ? video_.play() : video_.pause()
+          blurTooltipButtons()
           break
         case KeyboardShortcuts.VIDEO_PLAYER.PLAYBACK.LARGE_REWIND:
           // Rewind by 2x the time-skip interval (in seconds)
@@ -2331,6 +2369,7 @@ export default defineComponent({
           // Toggle full screen
           event.preventDefault()
           ui.getControls().toggleFullScreen()
+          blurTooltipButtons()
           break
         case KeyboardShortcuts.VIDEO_PLAYER.GENERAL.MUTE:
           // Toggle mute only if metakey is not pressed
@@ -2343,6 +2382,7 @@ export default defineComponent({
             const message = isMuted ? '0%' : `${Math.round(video_.volume * 100)}%`
             showValueChange(message, messageIcon)
           }
+          blurTooltipButtons()
           break
         case KeyboardShortcuts.VIDEO_PLAYER.GENERAL.CAPTIONS: {
           // Toggle caption/subtitles
@@ -2407,6 +2447,7 @@ export default defineComponent({
               controls.togglePiP()
             }
           }
+          blurTooltipButtons()
           break
         case '0':
         case '1':
@@ -2492,6 +2533,7 @@ export default defineComponent({
           events.dispatchEvent(new CustomEvent('setFullWindow', {
             detail: !fullWindowEnabled.value
           }))
+          blurTooltipButtons()
           break
         case KeyboardShortcuts.VIDEO_PLAYER.GENERAL.THEATRE_MODE:
           // Toggle theatre mode
@@ -2502,6 +2544,7 @@ export default defineComponent({
               detail: !props.useTheatreMode
             }))
           }
+          blurTooltipButtons()
           break
         case KeyboardShortcuts.VIDEO_PLAYER.GENERAL.TAKE_SCREENSHOT:
           if (enableScreenshot.value && props.format !== 'audio') {
@@ -2509,6 +2552,7 @@ export default defineComponent({
             // Take screenshot
             takeScreenshot()
           }
+          blurTooltipButtons()
           break
       }
     }
@@ -2885,7 +2929,7 @@ export default defineComponent({
         sabrManifest = player.getManifest()
       }
 
-      // For SABR we include the thumbnails and subtitles in the manifest
+      // For SABR we include the thumbnails, chapters and subtitles in the manifest
       if (!process.env.SUPPORTS_LOCAL_API || props.format === 'legacy' || props.manifestMimeType !== MANIFEST_TYPE_SABR) {
         const promises = []
 
@@ -2955,6 +2999,15 @@ export default defineComponent({
             // If an error occurs with them, it's not critical
             player.addThumbnailsTrack(props.storyboardSrc, 'text/vtt')
               .catch(error => logShakaError(error, 'addThumbnailsTrack', props.videoId, props.storyboardSrc))
+          )
+        }
+
+        if (!isLive.value && props.chaptersSrc.length > 0) {
+          promises.push(
+            // Only log the error, as the chapters are a nice to have (we have our own UI outside of the player too)
+            // If an error occurs with them, it is not critical
+            player.addChaptersTrack(props.chaptersSrc, 'und', 'text/vtt')
+              .catch(error => logShakaError(error, 'addChaptersTrack', props.videoId, props.chaptersSrc))
           )
         }
 
