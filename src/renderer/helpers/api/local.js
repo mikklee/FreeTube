@@ -3,6 +3,7 @@ import Autolinker from 'autolinker'
 import { SEARCH_CHAR_LIMIT } from '../../../constants'
 import store from '../../store/index'
 import { isRelativeTime } from '../relativeTime'
+import { isLocalizedViewCountText, parseLocalizedViewCount } from './viewCount'
 
 import { PlayerCache } from './PlayerCache'
 import {
@@ -1340,22 +1341,32 @@ export function parseLocalPlaylistVideo(video) {
 
     // the accessiblity text is the only place with the view count
     if (shortsLockupView.accessibility_text) {
-      // the `.*\s+` at the start of the regex, ensures we match the last occurence
-      // just in case the video title also contains that pattern
-      const match = shortsLockupView.accessibility_text.match(/.*\s+(\d+(?:[,.]\d+)?\s?(?:[BKMbkm]|million)?|no)\s+views?/)
+      if (store.state.settings.experimentalMultilingualText) {
+        // Use multilingual parser — accessibility text may be in any language
+        // e.g. "動画タイトル 5.9万回視聴" (Japanese), "Videotitel 59.809 Aufrufe" (German)
+        const views = parseLocalizedViewCount(shortsLockupView.accessibility_text)
 
-      if (match) {
-        const count = match[1]
+        if (!isNaN(views)) {
+          viewCount = views
+        }
+      } else {
+        // the `.*\s+` at the start of the regex, ensures we match the last occurence
+        // just in case the video title also contains that pattern
+        const match = shortsLockupView.accessibility_text.match(/.*\s+(\d+(?:[,.]\d+)?\s?(?:[BKMbkm]|million)?|no)\s+views?/)
 
-        // as it's rare that a video has no views,
-        // checking the length allows us to avoid running toLowerCase unless we have to
-        if (count.length === 2 && count === 'no') {
-          viewCount = 0
-        } else {
-          const views = parseLocalSubscriberCount(count)
+        if (match) {
+          const count = match[1]
 
-          if (!isNaN(views)) {
-            viewCount = views
+          // as it's rare that a video has no views,
+          // checking the length allows us to avoid running toLowerCase unless we have to
+          if (count.length === 2 && count === 'no') {
+            viewCount = 0
+          } else {
+            const views = parseLocalSubscriberCount(count)
+
+            if (!isNaN(views)) {
+              viewCount = views
+            }
           }
         }
       }
@@ -1469,7 +1480,7 @@ export function parseLocalListVideo(item, channelId, channelName) {
       title: video.title.text?.trim(),
       author: video.author?.name ?? channelName,
       authorId: (video.author?.id != null && video.author.id !== 'N/A') ? video.author.id : channelId,
-      viewCount: video.views.text == null ? null : extractNumberFromString(video.views.text),
+      viewCount: video.views.text == null ? null : (store.state.settings.experimentalMultilingualText ? parseLocalizedViewCount(video.views.text) : extractNumberFromString(video.views.text)),
       published,
       lengthSeconds: isLive ? '' : Utils.timeToSeconds(video.duration.text),
       isUpcoming: video.is_upcoming,
@@ -1516,9 +1527,19 @@ export function parseLocalListVideo(item, channelId, channelName) {
     let viewCount = null
 
     if (video.view_count?.text) {
-      viewCount = video.view_count.text.toLowerCase() === 'no views' ? 0 : extractNumberFromString(video.view_count.text)
+      if (store.state.settings.experimentalMultilingualText) {
+        const result = parseLocalizedViewCount(video.view_count.text)
+        viewCount = isNaN(result) ? null : result
+      } else {
+        viewCount = video.view_count.text.toLowerCase() === 'no views' ? 0 : extractNumberFromString(video.view_count.text)
+      }
     } else if (video.short_view_count?.text) {
-      viewCount = video.short_view_count.text.toLowerCase() === 'no views' ? 0 : parseLocalSubscriberCount(video.short_view_count.text)
+      if (store.state.settings.experimentalMultilingualText) {
+        const result = parseLocalizedViewCount(video.short_view_count.text)
+        viewCount = isNaN(result) ? null : result
+      } else {
+        viewCount = video.short_view_count.text.toLowerCase() === 'no views' ? 0 : parseLocalSubscriberCount(video.short_view_count.text)
+      }
     }
 
     return {
@@ -1556,6 +1577,10 @@ const PREMIERES_TIME_REGEX = /^premieres /i
 function isViewCountText(text) {
   if (typeof text !== 'string') { return false }
 
+  if (store.state.settings.experimentalMultilingualText) {
+    return isLocalizedViewCountText(text)
+  }
+
   return VIEWS_OR_WATCHING_REGEX.test(text) || VIEWS_IN_NUMBER_ONLY.test(text)
 }
 
@@ -1564,6 +1589,10 @@ function isViewCountText(text) {
  */
 function isViewOrWaitingCountText(text) {
   if (typeof text !== 'string') { return false }
+
+  if (store.state.settings.experimentalMultilingualText) {
+    return isLocalizedViewCountText(text)
+  }
 
   return WAITING_REGEX.test(text) || isViewCountText(text)
 }
@@ -1856,7 +1885,7 @@ export function parseLocalWatchNextVideo(video) {
       title: video.title.text?.trim(),
       author: video.author.name,
       authorId: video.author.id,
-      viewCount: video.view_count == null ? null : extractNumberFromString(video.view_count.text),
+      viewCount: video.view_count == null ? null : (store.state.settings.experimentalMultilingualText ? parseLocalizedViewCount(video.view_count.text) : extractNumberFromString(video.view_count.text)),
       published,
       lengthSeconds: isNaN(video.duration.seconds) ? '' : video.duration.seconds,
       liveNow: video.is_live,
@@ -2107,6 +2136,13 @@ export function parseLocalComment(comment, commentThread = undefined) {
  * @param {string} text
  */
 export function parseLocalSubscriberCount(text) {
+  if (store.state.settings.experimentalMultilingualText) {
+    const result = parseLocalizedViewCount(text)
+    if (!isNaN(result)) {
+      return result
+    }
+  }
+
   const match = text.match(/(\d+)(?:[,.](\d+))?\s?([BKMbkm]|million)\b/)
 
   if (match) {

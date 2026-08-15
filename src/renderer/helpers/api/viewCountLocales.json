@@ -1,0 +1,464 @@
+{
+  "en": {
+    "viewsTexts": ["views", "watching", "waiting"],
+    "multipliers": [
+      { "symbol": "K", "value": 1000 },
+      { "symbol": "M", "value": 1000000 },
+      { "symbol": "B", "value": 1000000000 }
+    ],
+    "noViewsTexts": ["no views"]
+  },
+  "de": {
+    "viewsTexts": ["Aufrufe"],
+    "multipliers": [],
+    "thousandsSeparator": ".",
+    "noViewsTexts": ["keine Aufrufe"]
+  },
+  "fr": {
+    "viewsTexts": ["vues"],
+    "multipliers": [
+      { "symbol": "k", "value": 1000 },
+      { "symbol": "M", "value": 1000000 }
+    ],
+    "noViewsTexts": ["aucune vue"]
+  },
+  "es": {
+    "viewsTexts": ["visualizaciones"],
+    "multipliers": [
+      { "symbol": "K", "value": 1000 },
+      { "symbol": "M", "value": 1000000 }
+    ],
+    "noViewsTexts": ["sin visualizaciones"]
+  },
+  "pt": {
+    "viewsTexts": ["visualizações"],
+    "multipliers": [
+      { "symbol": "mil", "value": 1000 },
+      { "symbol": "mi", "value": 1000000 }
+    ],
+    "noViewsTexts": ["sem visualizações"]
+  },
+  "ru": {
+    "viewsTexts": ["просмотров"],
+    "multipliers": [
+      { "symbol": "тыс.", "value": 1000 },
+      { "symbol": "млн", "value": 1000000 },
+      { "symbol": "млрд", "value": 1000000000 }
+    ],
+    "noViewsTexts": ["нет просмотров"]
+  },
+  "it": {
+    "viewsTexts": ["visualizzazioni"],
+    "multipliers": [
+      { "symbol": "K", "value": 1000 },
+      { "symbol": "M", "value": 1000000 }
+    ],
+    "noViewsTexts": ["nessuna visualizzazione"]
+  },
+  "nl": {
+    "viewsTexts": ["weergaven"],
+    "multipliers": [
+      { "symbol": "K", "value": 1000 },
+      { "symbol": "mln", "value": 1000000 }
+    ],
+    "noViewsTexts": ["geen weergaven"]
+  },
+  "pl": {
+    "viewsTexts": ["wyświetleń"],
+    "multipliers": [
+      { "symbol": "tys.", "value": 1000 },
+      { "symbol": "mln", "value": 1000000 },
+      { "symbol": "mld", "value": 1000000000 }
+    ],
+    "noViewsTexts": ["brak wyświetleń"]
+  },
+  "tr": {
+    "viewsTexts": ["görüntüleme"],
+    "multipliers": [
+      { "symbol": "B", "value": 1000 },
+      { "symbol": "Mn", "value": 1000000 }
+    ],
+    "noViewsTexts": ["görüntülenme yok"]
+  },
+  "sv": {
+    "viewsTexts": ["visningar"],
+    "multipliers": [],
+    "thousandsSeparator": " ",
+    "noViewsTexts": ["inga visningar"]
+  },
+  "da": {
+    "viewsTexts": ["visninger"],
+    "multipliers": [],
+    "thousandsSeparator": ".",
+    "noViewsTexts": ["ingen visninger"]
+  },
+  "no": {
+    "viewsTexts": ["avspillinger"],
+    "multipliers": [
+      { "symbol": "k", "value": 1000 }
+    ],
+    "noViewsTexts": ["ingen avspillinger"]
+  },
+  "fi": {
+    "viewsTexts": ["katselukertaa"],
+    "multipliers": [
+      { "symbol": "t.", "value": 1000 }
+    ],
+    "noViewsTexts": ["ei katselukertoja"]
+  },
+  "el": {
+    "viewsTexts": ["προβολές"],
+    "multipliers": [
+      { "symbol": "χιλ.", "value": 1000 }
+    ],
+    "noViewsTexts": ["καμία προβολή"]
+  },
+  "cs": {
+    "viewsTexts": ["zhlédnutí"],
+    "multipliers": [
+      { "symbol": "tis.", "value": 1000 }
+    ],
+    "noViewsTexts": ["žádná zhlédnutí"]
+  },
+  "hu": {
+    "viewsTexts": ["megtekintés"],
+    "multipliers": [
+      { "symbol": "E", "value": 1000 }
+    ],
+    "noViewsTexts": ["nincs megtekintés"]
+  },
+  "ro": {
+    "viewsTexts": ["de vizionări", "vizionări"],
+    "multipliers": [
+      { "symbol": "K", "value": 1000 },
+      { "symbol": "M", "value": 1000000 }
+    ],
+    "noViewsTexts": ["fără vizionări"]
+  },
+  "uk": {
+    "viewsTexts": ["переглядів"],
+    "multipliers": [
+      { "symbol": "тис.", "value": 1000 },
+      { "symbol": "млн", "value": 1000000 },
+      { "symbol": "млрд", "value": 1000000000 }
+    ],
+    "noViewsTexts": ["немає переглядів"]
+  },
+  "vi": {
+    "viewsTexts": ["lượt xem"],
+    "multipliers": [
+      { "symbol": "N", "value": 1000 },
+      { "symbol": "Tr", "value": 1000000 }
+    ],
+    "noViewsTexts": ["không có lượt xem"]
+  },
+  "th": {
+    "viewsTexts": ["การดู"],
+    "multipliers": [
+      { "symbol": "หมื่น", "value": 10000 },
+      { "symbol": "แสน", "value": 100000 },
+      { "symbol": "ล้าน", "value": 1000000 }
+    ],
+    "timesSymbols": ["ครั้ง"],
+    "noViewsTexts": ["ไม่มีการดู"]
+  },
+  "id": {
+    "viewsTexts": ["ditonton"],
+    "multipliers": [
+      { "symbol": "rb", "value": 1000 },
+      { "symbol": "jt", "value": 1000000 }
+    ],
+    "timesSymbols": ["x"],
+    "noViewsTexts": ["belum ditonton"]
+  },
+  "ms": {
+    "viewsTexts": ["tontonan"],
+    "multipliers": [
+      { "symbol": "K", "value": 1000 }
+    ],
+    "noViewsTexts": ["tiada tontonan"]
+  },
+  "az": {
+    "viewsTexts": ["baxış"],
+    "multipliers": [
+      { "symbol": "K", "value": 1000 }
+    ],
+    "noViewsTexts": ["baxış yoxdur"]
+  },
+  "iw": {
+    "viewsTexts": ["צפיות"],
+    "multipliers": [
+      { "symbol": "K", "value": 1000 },
+      { "symbol": "M", "value": 1000000 }
+    ],
+    "noViewsTexts": ["אין צפיות"]
+  },
+  "ar": {
+    "viewsTexts": ["مشاهدة"],
+    "multipliers": [
+      { "symbol": "ألف", "value": 1000 },
+      { "symbol": "مليون", "value": 1000000 },
+      { "symbol": "مليار", "value": 1000000000 }
+    ],
+    "noViewsTexts": ["بدون مشاهدة"]
+  },
+  "hi": {
+    "viewsTexts": ["व्यू"],
+    "multipliers": [
+      { "symbol": "हज़ार", "value": 1000 },
+      { "symbol": "लाख", "value": 100000 },
+      { "symbol": "करोड़", "value": 10000000 }
+    ],
+    "noViewsTexts": ["कोई व्यू नहीं"]
+  },
+  "bn": {
+    "viewsTexts": ["ভিউ"],
+    "multipliers": [
+      { "symbol": "হাটি", "value": 1000 },
+      { "symbol": "লাটি", "value": 100000 }
+    ],
+    "noViewsTexts": ["কোনো ভিউ নেই"]
+  },
+  "ta": {
+    "viewsTexts": ["பார்வைகள்"],
+    "multipliers": [
+      { "symbol": "லட்சம்", "value": 100000 },
+      { "symbol": "கோடி", "value": 10000000 }
+    ],
+    "noViewsTexts": ["பார்வைகள் இல்லை"]
+  },
+  "te": {
+    "viewsTexts": ["వీక్షణలు"],
+    "multipliers": [
+      { "symbol": "లక్ష", "value": 100000 },
+      { "symbol": "లక్షలు", "value": 100000 },
+      { "symbol": "కోట్లు", "value": 10000000 }
+    ],
+    "noViewsTexts": ["వీక్షణలు లేవు"]
+  },
+  "af": {
+    "viewsTexts": ["kyke"],
+    "multipliers": [
+      { "symbol": "k", "value": 1000 }
+    ],
+    "noViewsTexts": ["geen kyke"]
+  },
+  "hy": {
+    "viewsTexts": ["դիտում"],
+    "multipliers": [
+      { "symbol": "հզր", "value": 1000 }
+    ],
+    "noViewsTexts": ["դիտում չկա"]
+  },
+  "eu": {
+    "viewsTexts": ["ikustaldi"],
+    "multipliers": [],
+    "thousandsSeparator": ".",
+    "noViewsTexts": ["ikustaldirik ez"]
+  },
+  "be": {
+    "viewsTexts": ["праглядаў"],
+    "multipliers": [
+      { "symbol": "тыс.", "value": 1000 },
+      { "symbol": "млн", "value": 1000000 }
+    ],
+    "noViewsTexts": ["няма праглядаў"]
+  },
+  "bs": {
+    "viewsTexts": ["pregleda"],
+    "multipliers": [
+      { "symbol": "hilj.", "value": 1000 }
+    ],
+    "noViewsTexts": ["nema pregleda"]
+  },
+  "bg": {
+    "viewsTexts": ["показвания"],
+    "multipliers": [
+      { "symbol": "хил.", "value": 1000 },
+      { "symbol": "млн", "value": 1000000 }
+    ],
+    "noViewsTexts": ["няма показвания"]
+  },
+  "ca": {
+    "viewsTexts": ["visualitzacions"],
+    "multipliers": [
+      { "symbol": "k", "value": 1000 },
+      { "symbol": "M", "value": 1000000 }
+    ],
+    "noViewsTexts": ["sense visualitzacions"]
+  },
+  "hr": {
+    "viewsTexts": ["pregleda"],
+    "multipliers": [
+      { "symbol": "tis.", "value": 1000 }
+    ],
+    "noViewsTexts": ["nema pregleda"]
+  },
+  "et": {
+    "viewsTexts": ["vaatamist"],
+    "multipliers": [
+      { "symbol": "tuh", "value": 1000 }
+    ],
+    "noViewsTexts": ["pole vaatamisi"]
+  },
+  "ka": {
+    "viewsTexts": ["ნახვა"],
+    "multipliers": [
+      { "symbol": "ათ.", "value": 1000 }
+    ],
+    "noViewsTexts": ["ნახვა არ არის"]
+  },
+  "gu": {
+    "viewsTexts": ["જોવાયાની સંખ્યા"],
+    "multipliers": [
+      { "symbol": "હજાર", "value": 1000 },
+      { "symbol": "લાખ", "value": 100000 },
+      { "symbol": "કરોડ", "value": 10000000 }
+    ],
+    "noViewsTexts": ["જોવાયા નહીં"]
+  },
+  "is": {
+    "viewsTexts": ["áhorf"],
+    "multipliers": [
+      { "symbol": "þ.", "value": 1000 }
+    ],
+    "noViewsTexts": ["engin áhorf"]
+  },
+  "kk": {
+    "viewsTexts": ["көрілді"],
+    "multipliers": [
+      { "symbol": "мың", "value": 1000 },
+      { "symbol": "м.", "value": 1000 }
+    ],
+    "timesSymbols": ["рет"],
+    "noViewsTexts": ["көрініс жоқ"]
+  },
+  "lv": {
+    "viewsTexts": ["skatījumu"],
+    "multipliers": [
+      { "symbol": "tūkst.", "value": 1000 }
+    ],
+    "noViewsTexts": ["nav skatījumu"]
+  },
+  "lt": {
+    "viewsTexts": ["peržiūrų"],
+    "multipliers": [
+      { "symbol": "tūkst.", "value": 1000 }
+    ],
+    "noViewsTexts": ["nėra peržiūrų"]
+  },
+  "mk": {
+    "viewsTexts": ["прегледи"],
+    "multipliers": [
+      { "symbol": "илј.", "value": 1000 }
+    ],
+    "noViewsTexts": ["нема прегледи"]
+  },
+  "mr": {
+    "viewsTexts": ["व्ह्यू"],
+    "multipliers": [
+      { "symbol": "ह", "value": 1000 },
+      { "symbol": "लाख", "value": 100000 },
+      { "symbol": "करोड", "value": 10000000 }
+    ],
+    "noViewsTexts": ["व्ह्यू नाहीत"]
+  },
+  "mn": {
+    "viewsTexts": ["үзэлт"],
+    "multipliers": [
+      { "symbol": "мян", "value": 1000 }
+    ],
+    "noViewsTexts": ["үзэлт байхгүй"]
+  },
+  "pa": {
+    "viewsTexts": ["ਦੇਖਿਆ"],
+    "multipliers": [
+      { "symbol": "ਹਜ਼ਾਰ", "value": 1000 },
+      { "symbol": "ਲੱਖ", "value": 100000 },
+      { "symbol": "ਕਰੋੜ", "value": 10000000 }
+    ],
+    "timesSymbols": ["ਵਾਰ"],
+    "noViewsTexts": ["ਕੋਈ ਦੇਖਿਆ ਨਹੀਂ"]
+  },
+  "sr": {
+    "viewsTexts": ["прегледа"],
+    "multipliers": [
+      { "symbol": "хиљ.", "value": 1000 }
+    ],
+    "noViewsTexts": ["нема прегледа"]
+  },
+  "sk": {
+    "viewsTexts": ["zhliadnutí"],
+    "multipliers": [
+      { "symbol": "tis.", "value": 1000 }
+    ],
+    "noViewsTexts": ["žiadne zhliadnutia"]
+  },
+  "sl": {
+    "viewsTexts": ["ogledov"],
+    "multipliers": [
+      { "symbol": "tis.", "value": 1000 }
+    ],
+    "noViewsTexts": ["ni ogledov"]
+  },
+  "sw": {
+    "viewsTexts": ["Kutazamwa"],
+    "multipliers": [
+      { "symbol": "elfu", "value": 1000 }
+    ],
+    "noViewsTexts": ["hakuna kutazamwa"]
+  },
+  "fil": {
+    "viewsTexts": ["panonood"],
+    "multipliers": [
+      { "symbol": "K", "value": 1000 },
+      { "symbol": "M", "value": 1000000 }
+    ],
+    "noViewsTexts": ["walang panonood"]
+  },
+  "ur": {
+    "viewsTexts": ["ملاحظات"],
+    "multipliers": [
+      { "symbol": "ہزار", "value": 1000 },
+      { "symbol": "لاکھ", "value": 100000 },
+      { "symbol": "کروڑ", "value": 10000000 }
+    ],
+    "noViewsTexts": ["کوئی ملاحظات نہیں"]
+  },
+  "ko": {
+    "viewsTexts": ["조회수"],
+    "multipliers": [
+      { "symbol": "만", "value": 10000 },
+      { "symbol": "억", "value": 100000000 }
+    ],
+    "timesSymbols": ["회"],
+    "noViewsTexts": ["조회수 없음"]
+  },
+  "ja": {
+    "viewsTexts": ["視聴"],
+    "multipliers": [
+      { "symbol": "万", "value": 10000 },
+      { "symbol": "億", "value": 100000000 }
+    ],
+    "timesSymbols": ["回"],
+    "noViewsTexts": ["視聴なし"]
+  },
+  "zh-CN": {
+    "viewsTexts": ["观看"],
+    "multipliers": [
+      { "symbol": "万", "value": 10000 },
+      { "symbol": "亿", "value": 100000000 }
+    ],
+    "timesSymbols": ["次"],
+    "noViewsTexts": ["无观看"]
+  },
+  "zh-TW": {
+    "viewsTexts": ["觀看次數", "觀看"],
+    "multipliers": [
+      { "symbol": "萬", "value": 10000 },
+      { "symbol": "億", "value": 100000000 }
+    ],
+    "timesSymbols": ["次"],
+    "noViewsTexts": ["無觀看次數"]
+  }
+}

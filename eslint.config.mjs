@@ -25,8 +25,8 @@ export default [
       'dist/',
       'eslint.config.mjs',
       // The JSON files inside this directory are auto-generated, so they don't follow the code style rules
-      'static/geolocations/'
-    ]
+      'static/geolocations/',
+    ],
   },
   {
     name: 'base',
@@ -54,15 +54,21 @@ export default [
       'object-shorthand': ['warn', 'properties'],
 
       'accessor-pairs': ['error', { setWithoutGet: true, enforceForClassMembers: true }],
-      'array-callback-return': ['error', {
-        allowImplicit: false,
-        checkForEach: false,
-      }],
-      camelcase: ['error', {
-        allow: ['^UNSAFE_'],
-        properties: 'never',
-        ignoreGlobals: true,
-      }],
+      'array-callback-return': [
+        'error',
+        {
+          allowImplicit: false,
+          checkForEach: false,
+        },
+      ],
+      camelcase: [
+        'error',
+        {
+          allow: ['^UNSAFE_'],
+          properties: 'never',
+          ignoreGlobals: true,
+        },
+      ],
       curly: ['error', 'multi-line'],
       'default-case-last': 'error',
       eqeqeq: ['error', 'always', { null: 'ignore' }],
@@ -95,17 +101,23 @@ export default [
       'no-unmodified-loop-condition': 'error',
       'no-unneeded-ternary': ['error', { defaultAssignment: false }],
       'no-unreachable-loop': 'error',
-      'no-unused-expressions': ['error', {
-        allowShortCircuit: true,
-        allowTernary: true,
-        allowTaggedTemplates: true,
-      }],
-      'no-unused-vars': ['error', {
-        args: 'none',
-        caughtErrors: 'none',
-        ignoreRestSiblings: true,
-        vars: 'all',
-      }],
+      'no-unused-expressions': [
+        'error',
+        {
+          allowShortCircuit: true,
+          allowTernary: true,
+          allowTaggedTemplates: true,
+        },
+      ],
+      'no-unused-vars': [
+        'error',
+        {
+          args: 'none',
+          caughtErrors: 'none',
+          ignoreRestSiblings: true,
+          vars: 'all',
+        },
+      ],
       'no-use-before-define': ['error', { functions: false, classes: false, variables: false }],
       'no-useless-call': 'error',
       'no-useless-computed-key': 'error',
@@ -119,10 +131,13 @@ export default [
       'prefer-regex-literals': ['error', { disallowRedundantWrapping: true }],
       'symbol-description': 'error',
       'unicode-bom': ['error', 'never'],
-      'use-isnan': ['error', {
-        enforceForSwitchCase: true,
-        enforceForIndexOf: true,
-      }],
+      'use-isnan': [
+        'error',
+        {
+          enforceForSwitchCase: true,
+          enforceForIndexOf: true,
+        },
+      ],
       'valid-typeof': ['error', { requireStringLiterals: true }],
       yoda: ['error', 'never'],
 
@@ -155,13 +170,16 @@ export default [
       '@stylistic/arrow-spacing': ['error', { before: true, after: true }],
       '@stylistic/block-spacing': ['error', 'always'],
       '@stylistic/brace-style': ['error', '1tbs', { allowSingleLine: true }],
-      '@stylistic/comma-dangle': ['warn', {
-        arrays: 'ignore',
-        enums: 'ignore',
-        exports: 'ignore',
-        imports: 'ignore',
-        objects: 'ignore',
-      }],
+      '@stylistic/comma-dangle': [
+        'warn',
+        {
+          arrays: 'ignore',
+          enums: 'ignore',
+          exports: 'ignore',
+          imports: 'ignore',
+          objects: 'ignore',
+        },
+      ],
       '@stylistic/comma-spacing': ['error', { before: false, after: true }],
       '@stylistic/comma-style': ['error', 'last'],
       '@stylistic/computed-property-spacing': ['error', 'never', { enforceForClassMembers: true }],
@@ -169,22 +187,26 @@ export default [
       '@stylistic/eol-last': 'error',
       '@stylistic/function-call-spacing': ['error', 'never'],
       '@stylistic/generator-star-spacing': ['error', { before: true, after: true }],
-      '@stylistic/indent': ['error', 2, {
-        SwitchCase: 1,
-        VariableDeclarator: 1,
-        outerIIFEBody: 1,
-        MemberExpression: 1,
-        FunctionDeclaration: { parameters: 1, body: 1 },
-        FunctionExpression: { parameters: 1, body: 1 },
-        CallExpression: { arguments: 1 },
-        ArrayExpression: 1,
-        ObjectExpression: 1,
-        ImportDeclaration: 1,
-        flatTernaryExpressions: false,
-        ignoreComments: false,
-        ignoredNodes: ['TemplateLiteral *'],
-        offsetTernaryExpressions: true,
-      }],
+      '@stylistic/indent': [
+        'error',
+        2,
+        {
+          SwitchCase: 1,
+          VariableDeclarator: 1,
+          outerIIFEBody: 1,
+          MemberExpression: 1,
+          FunctionDeclaration: { parameters: 1, body: 1 },
+          FunctionExpression: { parameters: 1, body: 1 },
+          CallExpression: { arguments: 1 },
+          ArrayExpression: 1,
+          ObjectExpression: 1,
+          ImportDeclaration: 1,
+          flatTernaryExpressions: false,
+          ignoreComments: false,
+          ignoredNodes: ['TemplateLiteral *'],
+          offsetTernaryExpressions: true,
+        },
+      ],
       '@stylistic/key-spacing': ['error', { beforeColon: false, afterColon: true }],
       '@stylistic/keyword-spacing': ['error', { before: true, after: true }],
       '@stylistic/lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
@@ -192,14 +214,17 @@ export default [
       '@stylistic/new-parens': 'error',
       '@stylistic/no-extra-parens': ['error', 'functions'],
       '@stylistic/no-floating-decimal': 'error',
-      '@stylistic/no-mixed-operators': ['error', {
-        groups: [
-          ['==', '!=', '===', '!==', '>', '>=', '<', '<='],
-          ['&&', '||'],
-          ['in', 'instanceof'],
-        ],
-        allowSamePrecedence: true,
-      }],
+      '@stylistic/no-mixed-operators': [
+        'error',
+        {
+          groups: [
+            ['==', '!=', '===', '!==', '>', '>=', '<', '<='],
+            ['&&', '||'],
+            ['in', 'instanceof'],
+          ],
+          allowSamePrecedence: true,
+        },
+      ],
       '@stylistic/no-mixed-spaces-and-tabs': 'error',
       '@stylistic/no-multi-spaces': ['error', { ignoreEOLComments: true }],
       '@stylistic/no-multiple-empty-lines': ['error', { max: 1, maxBOF: 0, maxEOF: 0 }],
@@ -221,10 +246,14 @@ export default [
       '@stylistic/space-in-parens': ['error', 'never'],
       '@stylistic/space-infix-ops': 'error',
       '@stylistic/space-unary-ops': ['error', { words: true, nonwords: false }],
-      '@stylistic/spaced-comment': ['error', 'always', {
-        line: { markers: ['*package', '!', '/', ',', '='] },
-        block: { balanced: true, markers: ['*package', '!', ',', ':', '::', 'flow-include'], exceptions: ['*'] },
-      }],
+      '@stylistic/spaced-comment': [
+        'error',
+        'always',
+        {
+          line: { markers: ['*package', '!', '/', ',', '='] },
+          block: { balanced: true, markers: ['*package', '!', ',', ':', '::', 'flow-include'], exceptions: ['*'] },
+        },
+      ],
       '@stylistic/template-curly-spacing': ['error', 'never'],
       '@stylistic/template-tag-spacing': ['error', 'never'],
       '@stylistic/wrap-iife': ['error', 'any', { functionPrototypeMethods: true }],
@@ -234,15 +263,11 @@ export default [
 
   js.configs.recommended,
   ...eslintPluginVue.configs['flat/recommended'],
-  ...vuejsAccessibility.configs["flat/recommended"],
+  ...vuejsAccessibility.configs['flat/recommended'],
   ...intlifyVueI18N.configs.recommended,
   {
-    files: [
-      '**/*.{js,vue}',
-    ],
-    ignores: [
-      '_scripts/',
-    ],
+    files: ['**/*.{js,vue}'],
+    ignores: ['_scripts/'],
     plugins: {
       unicorn: eslintPluginUnicorn,
       jsdoc,
@@ -276,20 +301,26 @@ export default [
       // which sanitizes the HTML before inserting it into the DOM
       'vue/no-v-html': 'error',
 
-      'no-console': ['error', {
-        allow: ['warn', 'error'],
-      }],
+      'no-console': [
+        'error',
+        {
+          allow: ['warn', 'error'],
+        },
+      ],
 
       'no-unused-vars': 'warn',
       'no-undef': 'warn',
       'object-shorthand': 'off',
       'vue/multi-word-component-names': 'off',
 
-      'vuejs-accessibility/label-has-for': ['error', {
-        required: {
-          some: ['nesting', 'id'],
+      'vuejs-accessibility/label-has-for': [
+        'error',
+        {
+          required: {
+            some: ['nesting', 'id'],
+          },
         },
-      }],
+      ],
 
       'vuejs-accessibility/no-static-element-interactions': 'off',
       'unicorn/better-regex': 'error',
@@ -303,24 +334,19 @@ export default [
       '@intlify/vue-i18n/no-dynamic-keys': 'error',
       '@intlify/vue-i18n/no-duplicate-keys-in-locale': 'error',
 
-      '@intlify/vue-i18n/no-raw-text': ['error', {
-        attributes: {
-          '/.+/': [
-            'title',
-            'aria-label',
-            'aria-placeholder',
-            'aria-roledescription',
-            'aria-valuetext',
-            'tooltip',
-            'message',
-          ],
+      '@intlify/vue-i18n/no-raw-text': [
+        'error',
+        {
+          attributes: {
+            '/.+/': ['title', 'aria-label', 'aria-placeholder', 'aria-roledescription', 'aria-valuetext', 'tooltip', 'message'],
 
-          input: ['placeholder', 'value'],
-          img: ['alt'],
+            input: ['placeholder', 'value'],
+            img: ['alt'],
+          },
+
+          ignoreText: ['-', '•', '/', 'YouTube', 'Invidious', 'FreeTube'],
         },
-
-        ignoreText: ['-', '•', '/', 'YouTube', 'Invidious', 'FreeTube'],
-      }],
+      ],
 
       'vue/no-unused-emit-declarations': 'error',
       'vue/prefer-use-template-ref': 'error',
@@ -342,17 +368,15 @@ export default [
     files: ['src/main/index.js'],
     languageOptions: {
       globals: {
-        __FREETUBE_ALLOWED_PATHS__: 'readable'
-      }
-    }
+        __FREETUBE_ALLOWED_PATHS__: 'readable',
+      },
+    },
   },
 
   ...eslintPluginJsonc.configs.base,
   {
     files: ['**/*.json'],
-    ignores: [
-      '_scripts/',
-    ],
+    ignores: ['_scripts/'],
 
     rules: {
       '@stylistic/no-tabs': 'off',
@@ -372,10 +396,7 @@ export default [
   ...eslintPluginYml.configs.recommended,
   {
     files: ['**/*.{yml,yaml}'],
-    ignores: [
-      '.github/',
-      '_scripts/'
-    ],
+    ignores: ['.github/', '_scripts/'],
 
     rules: {
       'yml/no-irregular-whitespace': 'off',
@@ -405,11 +426,20 @@ export default [
     },
   },
   {
+    files: ['**/__tests__/**/*.test.js'],
+
+    languageOptions: {
+      globals: {
+        ...globals.jest,
+      },
+    },
+  },
+  {
     files: ['_scripts/*.js'],
     languageOptions: {
       globals: globals.node,
       ecmaVersion: 'latest',
-      sourceType: 'commonjs'
+      sourceType: 'commonjs',
     },
 
     plugins: {
@@ -424,7 +454,7 @@ export default [
       'unicorn/prefer-optional-catch-binding': 'error',
       'unicorn/prefer-date-now': 'error',
       'unicorn/prefer-array-index-of': 'error',
-    }
+    },
   },
   {
     files: ['_scripts/**/*.mjs'],
@@ -446,6 +476,6 @@ export default [
       'unicorn/prefer-optional-catch-binding': 'error',
       'unicorn/prefer-date-now': 'error',
       'unicorn/prefer-array-index-of': 'error',
-    }
-  }
+    },
+  },
 ]
